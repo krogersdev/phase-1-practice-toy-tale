@@ -59,16 +59,14 @@ document.addEventListener("DOMContentLoaded", () => {
     
   function handleLikes(toyObject) {
     fetch(`http://localhost:3000/toys/${toyObject.id}`, {
-
-      
       method: 'PATCH', 
       headers: {
         'Content-type' : 'application/json'
       },
-      body: JSON.stringify(toyObject)
+      body: JSON.stringify({likes: toyObject.likes})
     })
     .then(res => res.json())
-    .then(toys => console.log(toys));
+    .then(toy => console.log(toy));
   }
 
   //Fetches the Toys array of Objects and sends each to the CreateToy functon ,creating each Node
